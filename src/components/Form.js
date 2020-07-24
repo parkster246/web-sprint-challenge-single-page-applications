@@ -154,6 +154,7 @@ const Form = (props => {
         <label>
           pepperoni
           <input
+          data-cy="checkThis"
             type="checkbox"
             name="topp1"
             id="pepperoniInput"
@@ -212,6 +213,7 @@ const Form = (props => {
           type here
           <input
             type="text"
+            data-cy="checkThis"
             name="instructions"
             id="specialInput"
             placeholder="Ex. Well Done"
@@ -222,7 +224,7 @@ const Form = (props => {
         </label>
         <br></br>
         <br></br>
-        <h3>Contact Info</h3>
+        
         {/* <label htmlFor="nameInput">
           Name
           <input
@@ -252,7 +254,7 @@ const Form = (props => {
         <br></br>
         <br></br>
         
-        <button onClick={formSubmit}>
+        <button data-cy ="submit" onClick={formSubmit}>
 
             Confirm
     
