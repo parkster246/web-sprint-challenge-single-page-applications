@@ -264,19 +264,18 @@ const Form = (props => {
 
       <div>
         <div>
-       <Form
-        post={post} setPost={setPost}
-        />
-            <h3>Order</h3>
-        {post.map(order => (
-            <div>
-        <p>size: {order.size};</p>
-        <p>cheese: {order.cheese};</p>
-<p>sauce: {order.sauce}</p>
-<p>crust: {order.crust}</p> 
-<p>instructions: {order.instructions}</p>
-        </div>
-        ))}
+          {post ?
+            <>
+              <h3>Order</h3>
+              <div>
+                <p>size: {post.size}</p>
+                <p>cheese: {post.cheese}</p>
+                <p>sauce: {post.sauce}</p>
+                <p>crust: {post.crust}</p>
+                <p>instructions: {post.instructions}</p>
+              </div>
+            </>
+            : null}
         </div>
       </div>
     </div>
