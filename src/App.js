@@ -10,13 +10,11 @@ const App = () => {
     <div>
     <h1>Lambda Eats</h1>   
 
-
-<ul>
+    <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/pizza'>Order</Link></li>
-        
         <li><Link to='/confirm'>Confirmation</Link></li>
-      </ul>
+    </ul>
     <Route exact path='/' component={HomePage}/>
     <Route exact path='/pizza' component={Form}/>
     <Route exact path='/confirm' component={Confirm}/>

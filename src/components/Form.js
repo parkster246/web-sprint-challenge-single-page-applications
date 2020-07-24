@@ -35,13 +35,8 @@ const Form = (props => {
     topp2: Yup.string(),
     topp3: Yup.string(),
     topp4: Yup.string(),
-    instructions: Yup.string(),
-    name: Yup.string()
-      .required("Must include a Name.")
-      .min(2, "Your name cant be that short!"),
-    email: Yup.string()
-      .email("Must be a valid email address.")
-      .required("Must include and email address"),
+    instructions: Yup.string()
+    
   });
   const [post, setPost] = useState([]);
 
@@ -86,27 +81,36 @@ const Form = (props => {
       .catch((err) => console.log(err));
   };
 
+    console.log(errors);
 
   return (
     <div>
+      {errors ?
+        <>
+          <p>{errors.crust}</p>
+          <p>{errors.cheese}</p>
+          <p>{errors.size}</p>
+          <p>{errors.sauce}</p>
+        </>
+        :null
+      }
       <form onSubmit={formSubmit}>
         <label>
           <h3>Choice of Size</h3>
         </label>
         <select id="sizeInput" name="size" onChange={inputChange}>
-          <option>Select</option>
+          <option value="">Select</option>
           <option value="Personal">Personal</option>
           <option value="Small">Small</option>
           <option value="Medium">Medium</option>
           <option value="Large">Large</option>
           <option value="Family">Family</option>
         </select>
-      </form>
       <label>
         <h3>Cheese</h3>
       </label>
       <select id="cheeseInput" name="cheese" onChange={inputChange}>
-        <option>Select</option>
+        <option value="">Select</option>
         <option value="Mozzarella">Mozzarella</option>
         <option value="Cheddar">Cheddar</option>
         <option value="Parmesan">Parmesan</option>
@@ -121,7 +125,7 @@ const Form = (props => {
         <h3>Sauce</h3>
       </label>
       <select id="sauceInput" name="sauce" onChange={inputChange}>
-        <option>Select</option>
+        <option value="">Select</option>
         <option value="Marinara">Marinara</option>
         <option value="Spicy Marinara">Spicy Marinara</option>
         <option value="Alfredo">Alfredo</option>
@@ -136,7 +140,7 @@ const Form = (props => {
         <h3>Crust</h3>
       </label>
       <select id="crustInput" name="crust" onChange={inputChange}>
-        <option>Select</option>
+        <option value="">Select</option>
         <option value="Plain">Plain</option>
         <option value="Butter">Butter</option>
         <option value="Butter cheese">Butter cheese</option>
@@ -149,13 +153,12 @@ const Form = (props => {
       <br></br>
       <br></br>
 
-      <form>
         <h3>Toppings</h3>
         <label>
           pepperoni
           <input
-          data-cy="checkThis"
             type="checkbox"
+            data-cy="checkThis"
             name="topp1"
             id="pepperoniInput"
             error={errors}
@@ -224,45 +227,12 @@ const Form = (props => {
         </label>
         <br></br>
         <br></br>
-        
-        {/* <label htmlFor="nameInput">
-          Name
-          <input
-            type="text"
-            placeholder="Full Name"
-            name="name"
-            id="nameInput"
-            error={errors}
-            value={formState.name}
-            onChange={inputChange}
-          />
-        </label> */}
-        {/* <br></br>
-        <br></br>
-        <label htmlFor="mailInput">
-          Email
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            id="emailInput"
-            error={errors}
-            value={formState.email}
-            onChange={inputChange}
-          />
-        </label> */}
-        <br></br>
-        <br></br>
-        
-        <button data-cy ="submit" onClick={formSubmit}>
-
+        <button disabled={buttonDisabled} data-cy ="submit" onClick={formSubmit}>
             Confirm
-    
         </button>
         <Route exact path="/confirm" component={Confirm} />
 
       </form>
-
 
       <div>
         <div>
